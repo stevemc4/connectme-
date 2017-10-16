@@ -1,0 +1,65 @@
+<html> 
+        <head>
+            <title>ConnectMe</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src="jquery.js"></script>
+            <script>
+                window.onload = function()
+                {
+                    var params = new URLSearchParams(window.location.search);
+                    if(params.get("tochannel") != null)
+                    {
+                        $("#channelid").val(params.get("tochannel"));
+                    }
+                    $(window).on('scroll', function()
+                    {
+                        $(".container").css('opacity', 1-($(window).scrollTop() / ($("#p2").offset().top - 128)));
+                       if($(window).scrollTop() > 0)
+                       {
+                           $("nav").addClass("scrolled");
+                       }
+                       else
+                       {
+                            $("nav").removeClass("scrolled");
+                       }
+                    });
+                }
+                function setGlobal()
+                {
+                    $("#channelid").val("Global");
+                }
+                function JoinChannel()
+                {
+                    location.href = "/" + $("#channelid").val() + "?username=" + $("#username").val();
+                }
+                
+            </script>
+            <link rel='stylesheet' href='main.css'/>
+        </head>
+        <body class="loginpage">
+            <nav>
+                <h1 class="appTitle">ConnectMe</h1>
+                <button>K</button>   
+                <input type="text" id="channelid1" placeholder="ID Channel">
+                <input type="text" id="username1" placeholder="Username">
+                
+            </nav>
+            <div class="page" id="p1">
+                <div class="container">
+                    <h1>Channel Menu</h1>
+                    <form action="javascript:JoinChannel()">
+                        <label for="username">Nama Pengguna</label>
+                        <input type="text" id="username" placeholder="" value="Anonim" required><br>
+                        <label for="channelid" class="cid">ID Channel</label>
+                        <input type="text" id="channelid" placeholder="" required>
+                        <label>Atau masuk ke channel <a href="javascript:setGlobal()">Global</a></label>
+                        <input id="join" type="submit" value="Gabung">
+                    </form>
+                </div>
+            </div>
+            <div class="page" id="p2">
+                <h1>Public Chatting, Reimagined</h1>
+                <h2>Public Chatting, Reimagined</h2>
+            </div>
+        </body>
+    </html>

@@ -1,0 +1,38 @@
+<html> 
+    <head>
+        <title>HAY</title>
+        <script src="/socket.io/socket.io.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery.js"></script>
+        <script src="chatpage.js"></script>
+        <link rel='stylesheet' href='main.css'/>
+    </head>
+    <body>
+        <div class="window">
+            <nav>
+                <h1 class="roomName"></h1>
+                <h2 class="userIndicator">Memuat...</h2>
+                <button class="Back" onclick="location.href = '/'">&lt;</button>
+                <button class="opt">2</button>
+                <button class="menu">=</button>
+                <button class="share" onclick="copyShare()">@</button>
+            </nav>
+            <ul id="messages" onscroll="scrolled()">
+                
+            </ul>
+            <div class="bottomBar">
+                <form action="javascript:submitMsg()">
+                    <input onkeyup="setTyping()" class="input" placeholder="Tulis pesan..." type="text">
+                    <input type="button" class="emoji" onclick="submitMsg()" value="O">
+                    <input type="file" multiple onchange="uploadAttachment()" id="file" name="file" style="display: none">
+                    <input type="button" class="attach" onclick="attach()" value="a">
+                    <input type="submit" class="send" onclick="submitMsg()" value="K">
+                </form>
+                <div class="chatNotifier">
+                    <h1>Pesan Baru</h1>
+                    <i>d</i>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
